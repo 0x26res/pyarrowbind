@@ -1,4 +1,3 @@
 # pyarrowbind
 
-Illustrate issue with using (py)arrow with pybind11
-
+Illustrate how to use (py)arrow with pybind11

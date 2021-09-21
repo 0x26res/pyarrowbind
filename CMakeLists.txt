@@ -1,6 +1,9 @@
 PROJECT(pyarrowbind)
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16.3)
 
+# Very important!
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++11")
+
 FIND_PACKAGE(Python3 COMPONENTS Interpreter Development)
 FIND_PACKAGE(pybind11 REQUIRED PATHS ${CMAKE_SOURCE_DIR}/venv/lib/python3.8/site-packages/pybind11)
 
@@ -9,6 +12,7 @@ INCLUDE_DIRECTORIES(${pybind11_INCLUDE_DIR})
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/venv/lib/python3.8/site-packages/numpy/core/include)
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/venv/lib/python3.8/site-packages/pyarrow/include)
 
+# See https://pybind11.readthedocs.io/en/stable/compiling.html#advanced-interface-library-targets
 PROJECT(bindings LANGUAGES CXX)
 
 ADD_LIBRARY(
