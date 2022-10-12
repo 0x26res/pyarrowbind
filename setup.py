@@ -8,6 +8,7 @@ __version__ = "0.1.2"
 ROOT = pathlib.Path(__file__).parent
 README = (ROOT / "README.md").read_text()
 
+
 def get_extension():
     return Pybind11Extension(
         name="_protobind",
@@ -17,9 +18,7 @@ def get_extension():
         define_macros=[("VERSION_INFO", __version__)],
         cxx_std=11,
         extra_compile_args=["-D_GLIBCXX_USE_CXX11_ABI=0"],
-        include_dirs=[
-            "/usr/include"
-        ],
+        include_dirs=["/usr/include"],
         libraries=["protobuf", "protobuf-lite"],
         library_dirs=["/usr/lib/x86_64-linux-gnu"],
     )
